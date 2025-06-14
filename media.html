@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home-profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600&display=swap" rel="stylesheet">
+
+      <style>
+     *
+     {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+     }
+     html, body
+     {
+     margin: 0;
+     padding: 0;
+     overflow-x: hidden;
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     }
+
+     body
+     {
+     display: flex;
+     flex-direction: column;
+     }
+     #bg-video
+     {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      pointer-events: none;
+     }
+     header
+     {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      font-family: 'Playfair Display', serif;
+     }
+
+     .nav 
+     {
+      display: flex;
+      gap: 2rem;
+     }
+
+     .nav a
+     {
+      color: #242629;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+     }
+
+     .nav a:hover 
+     {
+      color: #ffffff;
+     }
+
+     .sidebar 
+     {
+      position: fixed;
+      top: 50%;
+     right: 0;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 10px 0 0 10px;
+     }
+
+     .sidebar a 
+     {
+       writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      color: #373333;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+     }
+
+     .sidebar a:hover
+     {
+      color: #ffffff;
+     }
+     #settings-modal 
+     {
+  display: none; /* hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+     }
+     .left-block
+     {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem;
+  padding: 1rem 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  max-width: 600px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+     }
+
+     /* Subtle scaling on hover */
+     .left-block:hover
+     {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+     }
+
+     .left-image  
+     {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+     }
+
+     .text-content 
+     {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+     }
+
+     .link-name 
+     {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.1rem;
+  color: #09427b;
+  text-decoration: none;
+  font-weight: 600;
+     }
+
+     .link-name:hover 
+     {
+  text-decoration: underline;
+  color: #2f00ff;
+     }
+
+     /* Hidden image for hover effect */
+     .hover-image 
+     {
+  position: absolute;
+  top: 60%;
+  left: 100%;
+   transform: translateY(-50%) translateX(10px); /* center vertically, small gap to right */
+  width: 500px;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+  pointer-events: none;
+     }
+
+     .left-block:hover .hover-image
+     {
+  opacity: 1;
+ transform: translateY(-50%) translateX(0); /* smooth slide-in */
+     }
+
+     #settings-modal > div 
+     {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+     } 
+
+      </style>
+        </head>
+   <body>
+    <!--background video -->
+ <video autoplay muted loop playsinline id="bg-video">
+    <source src="nrml background.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+    <header>
+    <!-- to header bar-->
+        <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="media.html">Media</a>
+    <a href="about.html">Info</a>
+  </div>
+<!-- settings on the profile-->  
+
+  <div style="font-weight: bold; color: #ffffff; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;" id="settings-icon">
+  farooq.kyu
+   <a href="settings.html" title="Settings">
+  <img src="IMG_20250531_071708.jpg" alt="Settings" title="Settings" style="width: 30px; height: 30px; cursor: pointer;" />
+</a>
+</div>
+
+</header>
+<!-- Sidebar Buttons -->
+ <div class="sidebar">
+    <a href="projects.html">Projects</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="chores.html">sensibility</a>
+    <a href="studies.html">studies</a>
+  </div>
+  <!-- instagram -->
+  <div class="left-block">
+  <img src="https://i.pinimg.com/736x/93/87/90/938790b17acb5b3b8236d65ce8c4fc45.jpg" alt="Instagram" class="left-image">
+  <div class="text-content">
+    <a href="https://www.instagram.com/farooq.kyu?igsh=ZWJ6d21yazU0bWd2" class="link-name">@farooq.kyu</a>
+    <p>virtual connection</p>
+  </div>
+    <!-- Hidden hover image -->
+  <img src="my insta proflie.png" alt="Preview" class="hover-image">
+</div>
+  <!-- whatsapp -->
+ <div class="left-block">
+  <img src="https://i.pinimg.com/736x/3b/54/78/3b54786f81719c3b3de6520bda675acd.jpg" alt="Instagram" class="left-image">
+  <div class="text-content">
+    <a href="https://wa.me/9490630748" class="link-name">senpai</a>
+    <p>basic</p>
+  </div>
+    <!-- Hidden hover image -->
+  <img src="my whatsaap profile2.png" alt="Preview" class="hover-image">
+</div>
+    <!-- x -->
+ <div class="left-block">
+  <img src="https://i.pinimg.com/736x/b3/ea/ac/b3eaacd7a29063b62d6c3b242032b7fd.jpg" alt="Instagram" class="left-image">
+  <div class="text-content">
+    <a href="https://x.com/farooq_senpai?t=ak9gyyavZfOefFJo8u3-0Q&s=09" class="link-name">farooq._.senpai</a>
+    <p>basic</p>
+  </div>
+    <!-- Hidden hover image -->
+  <img src="x profile.png" alt="Preview" class="hover-image">
+</div>
+      <!-- github -->
+ <div class="left-block">
+  <img src="https://i.pinimg.com/736x/64/88/0b/64880b9b0fe5b53bbe3f7280d262b33f.jpg" alt="Instagram" class="left-image">
+  <div class="text-content">
+    <a href="https://github.com/farooq-senpai" class="link-name">farooq-senpai</a>
+    <p>basic</p>
+  </div>
+    <!-- Hidden hover image -->
+  <img src="github profile.jpg" alt="Preview" class="hover-image">
+</div>
+     <!-- threads -->
+ <div class="left-block">
+  <img src="https://i.pinimg.com/736x/9f/46/de/9f46dea1ec01fe5b1cca5213cfb4a3b1.jpg" alt="Instagram" class="left-image">
+  <div class="text-content">
+    <a href="https://www.threads.net/@farooq.kyu" class="link-name">farooq.kyu</a>
+    <p>basic</p>
+  </div>
+    <!-- Hidden hover image -->
+  <img src="threads proflie.jpg" alt="Preview" class="hover-image">
+</div>
+       <!-- reddit -->
+ <div class="left-block">
+  <img src="https://i.pinimg.com/736x/60/44/b7/6044b756522f74aaf775772b3908940b.jpg" alt="Instagram" class="left-image">
+  <div class="text-content">
+    <a href="https://www.reddit.com/u/Ordinary_Bug3644/s/WqDwtaI6GX" class="link-name">Odinary_Bug3664</a>
+    <p>basic</p>
+  </div>
+    <!-- Hidden hover image -->
+  <img src="reddit profile.jpg" alt="Preview" class="hover-image">
+</div>
+    </header>
+   </body>
+</html>

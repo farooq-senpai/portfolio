@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      height: 100vh;
+    }
+     * 
+     {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+     }
+     html, body 
+     {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+    height: 100%;
+  display: flex;
+  flex-direction: column;
+     }
+
+    body {
+     flex-direction: column;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+     header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+        #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav a:hover {
+      color: #2f00ff;
+    }
+    .sidebar1 {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  border-radius: 10px 0 0 10px;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.05);
+  }
+.sidebar1 a {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #cac4b8;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+.sidebar1 a:hover {
+  color: #1b397e;
+}
+    .settings-box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    .settings-box h2 {
+      margin-bottom: 20px;
+    }
+
+    .settings-btn {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #4a90e2;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .settings-btn:hover {
+      background: #357abd;
+    }
+    @keyframes slideUpFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: slideUpFadeIn 0.8s ease-out forwards;
+}
+
+  </style>
+</head>
+<body>
+ <video autoplay muted loop playsinline id="bg-video">
+    <source src="green motion bg.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+<header>
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="media.html">Media</a>
+    <a href="about.html">Info</a>
+  </div>
+ <div style="font-weight: bold; color: #ffffff; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;" id="settings-icon">
+  farooq.kyu
+   <a href="settings.html" title="Settings">
+  <img src="IMG_20250531_071708.jpg" alt="Settings" title="Settings" style="width: 30px; height: 30px; cursor: pointer;" />
+</a>
+</div>
+
+</header>
+<!-- Sidebar Buttons -->
+ <div class="sidebar1">
+    <a href="projects.html">Projects</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="chores.html">sensibility</a>
+    <a href="studies.html">studies</a>
+  </div>
+<main style="flex: 1; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 10%;">
+  <div class="settings-box animate-in">
+    <h2>Settings</h2>
+    <button class="settings-btn" onclick="goToRegistration()">Create New Account</button>
+    <button class="settings-btn" onclick="confirmLogout()">Logout</button>
+  </div>
+</main>
+
+
+
+
+<script>
+  function goToRegistration() {
+    window.location.href = "registration.html";
+  }
+
+  function confirmLogout() {
+    const confirmation = confirm("Are you sure you want to logout?");
+    if (confirmation) {
+      window.location.href = "login.html";
+    }
+  }
+</script>
+
+</body>
+</html>

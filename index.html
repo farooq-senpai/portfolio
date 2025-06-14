@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Media</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+     * 
+     {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+     }
+     html, body 
+     {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+    height: 100%;
+  display: flex;
+  flex-direction: column;
+     }
+
+    body {
+     flex-direction: column;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+     header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+        #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: white;
+      top: 40%;
+      font-size: 2rem;
+      text-shadow: 2px 2px 5px black;
+    }
+
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav a:hover {
+      color: #2f00ff;
+    }
+     main {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
+      padding: 2rem;
+      flex: 1; /* allows main to take all remaining vertical space */
+    }
+
+    .character-image {
+      position: relative;
+      max-width: 400px;
+      z-index: 1;
+    }
+
+    .character-image img {
+      width: 100%;
+      border-radius: 20px;
+      display: block;
+      margin: 0 auto;
+        animation: float 4s ease-in-out infinite;
+    }
+  .centered-text {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fcfcfcc0;
+  font-size: 2rem;
+    font-family: 'Chewy', cursive;
+  font-weight: bold;
+  text-align: center;
+    text-shadow:
+    0 0 5px #ffffffa7,
+    0 0 10px rgb(148, 109, 125),
+    0 0 20px rgb(149, 85, 142),
+  
+  }
+    .profile-details {
+      position: absolute;
+      left: 2rem;
+      max-width: 300px;
+    }
+
+    .profile-details h1 {
+      font-size: 2.5rem;
+      color: #fff;
+    }
+
+    .profile-details h2 {
+      font-family: 'Cursive', sans-serif;
+      font-size: 2rem;
+      color: #c70737;
+      margin-bottom: 1rem;
+    }
+
+    .profile-details p {
+      font-size: 1rem;
+      color: #eee;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      text-shadow: 1px 1px 2px #000;
+    }
+.datetime {
+  position: absolute;
+  top: 10px;
+  right:20px;
+
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1.1rem;
+  font-family: 'Orbitron', sans-serif; /* <- New font here */
+  z-index: 1000;
+}
+.datetime{
+    font-family: 'Orbitron', sans-serif;
+}
+.details-card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  z-index: 1;
+}
+
+.details-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 1rem;
+  width: 180px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.details-card:hover {
+  transform: translateY(-5px);
+}
+
+.details-card h3 {
+   font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #d9d9db;
+}
+
+.details-card p {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.sidebar1 {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  border-radius: 10px 0 0 10px;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.05);
+  }
+.sidebar1 a {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #cac4b8;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+.sidebar1 a:hover {
+  color: #1b397e;
+}
+.rank {
+  position: fixed;
+  align-items: baseline;
+  flex-direction: row;
+  background-color: #ff0000;
+  backdrop-filter: blur(10px);
+}
+
+.image-and-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+footer {
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  backdrop-filter: blur(5px);
+  color: #b9a3a3;
+}
+/* Animation keyframes */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animate profile text */
+.profile-details h1,
+.profile-details h2,
+.profile-details p{
+  opacity: 0;
+  animation: fadeUp 1s ease-out forwards;
+}
+
+.profile-details h1 { animation-delay: 0.2s; }
+.profile-details h2 { animation-delay: 0.4s; }
+.profile-details p { animation-delay: 0.6s; }
+
+/* Animate image */
+.character-image img {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: fadeUp 1s ease-out forwards;
+  animation-delay: 0.8s;
+}
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+     #settings-modal > div 
+     {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+     } 
+  </style>
+</head>
+<body>
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="lines mooded.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+<header>
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="media.html">Media</a>
+    <a href="about.html">Info</a>
+  </div>
+
+  <div style="font-weight: bold; color: #ffffff; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;" id="settings-icon">
+  farooq.kyu
+   <a href="settings.html" title="Settings">
+  <img src="IMG_20250531_071708.jpg" alt="Settings" title="Settings" style="width: 30px; height: 30px; cursor: pointer;" />
+</a>
+</div>
+<!-- Settings Modal -->
+
+
+</header>
+<!-- Sidebar Buttons -->
+ <div class="sidebar1">
+    <a href="projects.html">Projects</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="chores.html">sensibility</a>
+    <a href="studies.html">studies</a>
+  </div>
+<main>
+  <!-- Text content on left -->
+  <div class="profile-details">
+    <h1>Shaik</h1>
+    <h2>Abdul Farooq</h2>
+    <p> I'm a focused and introspective individual who thrives in quiet spaces.
+ Skilled in coding, writing, and design, I continually grow through self-driven learning.
+ While reserved, I communicate effectively in collaboration and meaningful discussions.
+</p>
+    <p><strong></strong> </p>
+
+ 
+  </div>
+
+  <div class="datetime" id="datetime"></div>
+
+
+  <!-- Center image -->
+<div class="image-and-cards">
+  <div class="character-image">
+    <img src="https://i.pinimg.com/736x/f3/fd/48/f3fd489fe10b2f640770eb51c7b21f67.jpg" alt="Fern Character"/>
+  <div class="centered-text">senpai</div>
+  </div>
+
+  <div class="details-card-container">
+    <div class="details-card">
+      <h3>Skills</h3>
+      <p>JavaScript, HTML, CSS, MongoDB, Node.js</p>
+    </div>
+    <div class="details-card">
+      <h3>Tools</h3>
+      <p>VS Code, GitHub, Figma, Postman</p>
+    </div>
+    <div class="details-card">
+      <h3>Focus</h3>
+      <p>Creative Projects & Continuous Learning</p>
+    </div>
+    <div class="details-card">
+      <h3>Strengths</h3>
+      <p>Creative, Focused, Technical, Persistent</p>
+    </div>
+    <div class="details-card">
+      <h3>Quote</h3>
+      <p>🙂</p>
+    </div>
+  </div>
+  
+</div>
+
+<script>
+  function updateDateTime() {
+    const now = new Date();
+    const dateString = now.toLocaleDateString();
+    const timeString = now.toLocaleTimeString();
+    document.getElementById('datetime').textContent = `${dateString} • ${timeString}`;
+  }
+
+  setInterval(updateDateTime, 1000);
+  updateDateTime(); // call once immediately
+</script>
+</main>
+  <footer>
+    &copy; 2025 Shaik Abdul Farooq | All Rights Reserved
+  </footer>
+</body>
+</html>

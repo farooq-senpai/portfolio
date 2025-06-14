@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-blue-900 via-black to-gray-800 min-h-screen flex items-center justify-center text-white font-sans">
+
+  <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl shadow-2xl w-full max-w-md">
+    <h2 class="text-3xl font-bold text-center mb-6">Create Account</h2>
+    
+    <form onsubmit="handleSignup(event)" class="space-y-5">
+      <div>
+        <label for="fullname" class="block mb-1 text-white/80">Full Name</label>
+        <input type="text" id="fullname" required
+          class="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 placeholder-white/60 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+      
+      <div>
+        <label for="username" class="block mb-1 text-white/80">Username</label>
+        <input type="text" id="username" required
+          class="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 placeholder-white/60 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+      
+      <div>
+        <label for="password" class="block mb-1 text-white/80">Password</label>
+        <input type="password" id="password" required
+          class="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 placeholder-white/60 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <div>
+        <label for="confirm" class="block mb-1 text-white/80">Re-enter Password</label>
+        <input type="password" id="confirm" required
+          class="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 placeholder-white/60 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <div>
+        <label for="captcha" class="block mb-1 text-white/80">What is 2 + 3?</label>
+        <input type="text" id="captcha" placeholder="Enter answer" required
+          class="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 placeholder-white/60 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <button type="submit"
+        class="w-full py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition duration-200">
+        Sign Up
+      </button>
+    </form>
+
+    <p class="mt-6 text-center text-sm text-white/70">
+      Already have an account? <a href="login.html" class="text-blue-300 hover:underline">Login here</a>
+    </p>
+  </div>
+
+  <script>
+    function handleSignup(event) {
+      event.preventDefault();
+
+      const captchaAnswer = document.getElementById('captcha').value.trim();
+      const pass = document.getElementById('password').value;
+      const confirm = document.getElementById('confirm').value;
+
+      if (captchaAnswer !== "5") {
+        alert("CAPTCHA is incorrect.");
+        return;
+      }
+
+      if (pass !== confirm) {
+        alert("Passwords do not match.");
+        return;
+      }
+
+      // Redirect to login page after "successful" signup
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Media</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+    height: 100%;
+  display: flex;
+  flex-direction: column;
+    }
+    
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+       header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+       .nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav a:hover {
+      color: #19191b;
+    }
+    .sidebar1 {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  border-radius: 10px 0 0 10px;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.05);
+  }
+.sidebar1 a {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+.sidebar1 a:hover {
+  color: #7d8caf;
+}
+    .floating-media {
+      position: absolute;
+      z-index: 2;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      animation: float 6s infinite ease-in-out alternate;
+    }
+    @keyframes float {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-20px); }
+    }
+  </style>
+</head>
+<body>
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="car girl.mp4" type="video/mp4">
+</video>
+<header>
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="media.html">Media</a>
+    <a href="about.html">Info</a>
+  </div>
+
+  <div style="font-weight: bold; color: #ffffff; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;" id="settings-icon">
+  farooq.kyu
+   <a href="settings.html" title="Settings">
+  <img src="IMG_20250531_071708.jpg" alt="Settings" title="Settings" style="width: 30px; height: 30px; cursor: pointer;" />
+</a>
+</div>
+
+
+</header>
+<!-- Sidebar Buttons -->
+ <div class="sidebar1">
+    <a href="projects.html">Projects</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="chores.html">sensibility</a>
+    <a href="studies.html">studies</a>
+  </div>
+<script>
+  // Generate 15 floating images randomly placed, not in the center
+  const imageSources = [
+  
+    'https://i.pinimg.com/736x/49/3e/a8/493ea8ed34f8aa90e34b3daac105a592.jpg', 
+    'https://i.pinimg.com/736x/d6/e0/b7/d6e0b783b6d4195a69b322b839ac25f4.jpg', 
+    'https://i.pinimg.com/736x/57/8f/ac/578facc5b724e6e779a11928699d583b.jpg', 
+    'https://i.pinimg.com/736x/98/2a/dd/982add3c630ad6d9bf3c45193e0d2fbf.jpg',
+    'https://i.pinimg.com/736x/e8/55/5d/e8555dbf0c252e41057051a4241e1dde.jpg',
+    'https://i.pinimg.com/736x/9d/f5/58/9df558921b54cc1933c283e35a6352cf.jpg',
+    'https://i.pinimg.com/736x/c9/68/30/c96830801a8e371741919ee1872feaa1.jpg',
+    'https://i.pinimg.com/736x/9e/b9/40/9eb9405c5a200f5bfb6d4f9c5dc61187.jpg',
+    'https://i.pinimg.com/736x/73/e0/72/73e0723a0a4820d6e431e9fe0e048fa9.jpg',
+    'https://i.pinimg.com/736x/e0/f7/87/e0f78724fd92658384ad087f0a519789.jpg',
+    'https://i.pinimg.com/736x/a4/14/85/a41485096cbb526551a58d1fc7237b43.jpg', 
+    'https://i.pinimg.com/736x/4b/d7/a2/4bd7a2434cf6306950663258d8f6d555.jpg', 
+    'https://i.pinimg.com/736x/ac/65/3b/ac653b5d730e2ac66069c55a9a73f256.jpg', 
+    'https://i.pinimg.com/736x/7a/98/42/7a9842995239c53c5a8d9109eef6ad00.jpg', 
+    'https://i.pinimg.com/736x/15/2e/5d/152e5d1177d17448d200800bec8ab1ee.jpg'
+  ];
+
+  imageSources.forEach((src, index) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.className = 'floating-media';
+    img.style.width = Math.floor(Math.random() * 100 + 100) + 'px';
+    img.style.top = Math.floor(Math.random() * 80 + 5) + '%';
+    img.style.left = Math.floor(Math.random() * 80 + 5) + '%';
+    document.body.appendChild(img);
+  });
+
+  // Generate 3-5 audio notes
+  const audioSources = [
+    'https://www.fesliyanstudios.com/play-mp3/387', 
+    'https://www.soundjay.com/button/beep-07.mp3', 
+    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'
+  ];
+
+  const count = Math.floor(Math.random() * 3) + 3; // between 3 and 5
+
+  for (let i = 0; i < count; i++) {
+    const audio = document.createElement('audio');
+    audio.controls = true;
+    audio.src = audioSources[i % audioSources.length];
+    audio.className = 'floating-media';
+    audio.style.width = '150px';
+    audio.style.top = Math.floor(Math.random() * 80 + 5) + '%';
+    audio.style.left = Math.floor(Math.random() * 80 + 5) + '%';
+    document.body.appendChild(audio);
+  }
+</script>
+</body>
+</html>

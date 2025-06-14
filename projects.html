@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Info-Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+
+    html, body {
+   margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+    height: 100%;
+  display: flex;
+  flex-direction: column;
+    }
+
+    body {
+    flex-direction: column;
+      font-family: 'Segoe UI', sans-serif;
+   }
+       #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      pointer-events: none;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav a {
+      color: #000000;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav a:hover {
+      color: #859086;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 50%;
+     right: 0;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 10px 0 0 10px;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.05);
+    }
+
+    .sidebar a {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      color: #000000;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .sidebar a:hover {
+      color: #939d94;
+    }
+    #settings-modal > div 
+     {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+     } 
+     .bottom-link-block {
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  max-width: 500px;
+  text-align: center;
+  color: #000000;
+  font-size: 1rem;
+  font-family: 'Playfair Display', serif;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.bottom-link-block a {
+color:rgb(0, 0, 0);
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.bottom-link-block a:hover {
+  color:rgb(120, 140, 120);
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bottom-link-block {
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  max-width: 500px;
+  text-align: center;
+  color: #000000;
+  font-size: 1rem;
+  font-family: 'Playfair Display', serif;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.bottom-link-block:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.bottom-link-block:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.bottom-link-block:nth-child(5) {
+  animation-delay: 0.6s;
+}
+
+.bottom-link-block:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  transition: all 0.3s ease-in-out;
+}
+
+.bottom-link-block p {
+  transition: color 0.3s ease-in-out;
+}
+
+.bottom-link-block a {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.bottom-link-block a:hover {
+  color: rgb(120, 140, 120);
+  text-shadow: 0 0 2px rgba(0,0,0,0.2);
+  transition: opacity 0.5s ease-in;
+}
+
+    </style>
+    <body>
+        
+<!--background video -->
+ <video autoplay muted loop playsinline id="bg-video">
+    <source src="grapg motion.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+    <header>
+    <!-- to header bar-->
+        <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="media.html">Media</a>
+    <a href="about.html">Info</a>
+  </div>
+<!-- settings on the profile-->  
+ <div style="font-weight: bold; color: #000000; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;" id="settings-icon">
+  farooq.kyu
+   <a href="settings.html" title="Settings">
+  <img src="IMG_20250531_071708.jpg" alt="Settings" title="Settings" style="width: 30px; height: 30px; cursor: pointer;" />
+</a>
+</div>
+
+</header>
+<!-- Sidebar Buttons -->
+ <div class="sidebar">
+    <a href="projects.html">Projects</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="chores.html">sensibility</a>
+    <a href="studies.html">studies</a>
+  </div>
+  <div class="bottom-link-block">
+  <p>I created a clone of the IMDb website to practice building responsive user interfaces, fetching movie data from APIs, and working with modern web technologies.<a href="IMBD-clone.html" target="_blank">  <br>IMBD clone</a></p>
+</div>
+<div class="bottom-link-block">
+<p>I built an Instagram clone with core features like user login, posting images, likes, and comments. This project helped me strengthen my skills in full-stack development and responsive design.<a href="insta-clone.html"target="_blank"> <br>instagram clone </a></p>
+</div>   
+<div class="bottom-link-block">
+    <p>more to come....</p>
+</div>
+</body>
+    </head>
+    </html>
